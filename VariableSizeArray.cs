@@ -4,7 +4,7 @@ using System.Text;
 
 namespace NameSpace
 {
-     public class LineOfArray
+     public class LineOfIntArray
     {
         // Représente une ligne de tableau composée d'entiers
         public List<int> IntList = new List<int>();
@@ -19,11 +19,27 @@ namespace NameSpace
 
     class VariableSizeIntArray
     {
-        // représente un tableau coposé de lignes d'entiers
-        public int NumberOfLines ;
-        public int NumberOfColumns ;
-        private readonly List<LineOfArray> ListeOfLines = new List<LineOfArray>();
-      
+        // représente un tableau composé de lignes d'entiers
+        private readonly int NumberOfLines ;
+        private readonly int NumberOfColumns ;
+        private int ErrorCode = 0;
+        private readonly List<LineOfIntArray> ListeOfLines = new List<LineOfIntArray>();              
+
+        public  int GetLinesNumber()
+        {
+            return this.NumberOfLines;
+        }
+
+        public int GetColumnsNumber()
+        {
+            return this.NumberOfColumns;
+        }
+
+        public int GetErrorCodeNumber()
+        {
+            return this.ErrorCode;
+        }
+
         public VariableSizeIntArray(int rows, int columns)
         {
             this.NumberOfLines = rows;
@@ -31,10 +47,10 @@ namespace NameSpace
             
             for( int i=0; i<rows;i++)
             {
-                LineOfArray Line = new LineOfArray();
+                LineOfIntArray Line = new LineOfIntArray();
                 for ( int j=0;j<columns; j++)
                 {
-                    Line.IntList.Add(-1);
+                    Line.IntList.Add(0);
                 }
                 this.ListeOfLines.Add(Line);
             }            
@@ -42,13 +58,20 @@ namespace NameSpace
 
         public void SetValue(int row, int column, int value)
         {
-            this.ListeOfLines[row].IntList[column] = value;
+            if( row<0 || row>this.NumberOfLines ||column<0 || column>this.NumberOfColumns)
+            {
+                this.ErrorCode = 1;
+            }
+            else
+            {
+                this.ListeOfLines[row].IntList[column] = value;
+                this.ErrorCode = 0;
+            }            
         }
 
         public int GetValue(int row, int column)
         {
           return  this.ListeOfLines[row].IntList[column] ;
         }
-
     }
 }
