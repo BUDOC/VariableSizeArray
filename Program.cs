@@ -7,12 +7,7 @@ namespace NameSpace
         private static void Main()
         {
             // construit un tableau d'entiers de 4 lignes par 3 colonnes
-            VariableSizeIntArray myArray = new VariableSizeIntArray(4, 3);
-
-            // affecte la valeur 53 en (1,2)
-            myArray.SetValue(1, 2, 56);
-            Console.WriteLine("Code d'erreur = " + myArray.GetErrorCodeNumber());
-            showArray(myArray);
+           
 
             // Affiche les valeurs du tableau
             void showArray(VariableSizeIntArray intArray)
@@ -30,7 +25,16 @@ namespace NameSpace
                     Console.WriteLine();
                 }
 
+            Console.WriteLine("Code d'erreur = " + intArray.GetErrorCodeNumber());                             
             }
+            Console.WriteLine("How much rows for your array?");
+            string nl =Console.ReadLine();
+            Console.WriteLine("How much lines for your array?");
+            string nr = Console.ReadLine();
+            VariableSizeIntArray myArray = new VariableSizeIntArray(Convert.ToInt32(nl), Convert.ToInt32(nr));
+            // affecte la valeur 53 en (1,0)
+            myArray.SetValue(1, 2, 56);
+            showArray(myArray);
         }
     }
 }
