@@ -4,7 +4,7 @@ using System.Text;
 
 namespace NameSpace
 {
-     public class LineOfIntArray
+    public class LineOfIntArray
     {
         // Représente une ligne de tableau composée d'entiers
         public List<int> IntList = new List<int>();
@@ -12,20 +12,20 @@ namespace NameSpace
 
         public void AddAvalue(int myIntValue)
         {
-            IntList.Add(myIntValue);
-            NumberOfLineValues = IntList.Count;
+            this.IntList.Add(myIntValue);
+            this.NumberOfLineValues = this.IntList.Count;
         }
     }
 
     class VariableSizeIntArray
     {
         // représente un tableau composé de lignes d'entiers
-        private readonly int NumberOfLines ;
-        private readonly int NumberOfColumns ;
+        private readonly int NumberOfLines;
+        private readonly int NumberOfColumns;
         private int ErrorCode = 0;
-        private readonly List<LineOfIntArray> ListeOfLines = new List<LineOfIntArray>();              
+        private readonly List<LineOfIntArray> ListeOfLines = new List<LineOfIntArray>();
 
-        public  int GetLinesNumber()
+        public int GetLinesNumber()
         {
             return this.NumberOfLines;
         }
@@ -43,22 +43,22 @@ namespace NameSpace
         public VariableSizeIntArray(int rows, int columns)
         {
             this.NumberOfLines = rows;
-            this.NumberOfColumns=columns;
-            
-            for( int i=0; i<rows;i++)
+            this.NumberOfColumns = columns;
+
+            for (int i = 0; i < rows; i++)
             {
                 LineOfIntArray Line = new LineOfIntArray();
-                for ( int j=0;j<columns; j++)
+                for (int j = 0; j < columns; j++)
                 {
                     Line.IntList.Add(0);
                 }
                 this.ListeOfLines.Add(Line);
-            }            
+            }
         }
 
         public void SetValue(int row, int column, int value)
         {
-            if( row<0 || row>this.NumberOfLines ||column<0 || column>this.NumberOfColumns)
+            if (row < 0 || row > this.NumberOfLines || column < 0 || column > this.NumberOfColumns)
             {
                 this.ErrorCode = 1;
             }
@@ -66,12 +66,12 @@ namespace NameSpace
             {
                 this.ListeOfLines[row].IntList[column] = value;
                 this.ErrorCode = 0;
-            }            
+            }
         }
 
         public int GetValue(int row, int column)
         {
-          return  this.ListeOfLines[row].IntList[column] ;
+            return this.ListeOfLines[row].IntList[column];
         }
     }
 }

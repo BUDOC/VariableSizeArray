@@ -7,7 +7,7 @@ namespace NameSpace
         private static void Main()
         {
             // construit un tableau d'entiers de 4 lignes par 3 colonnes
-            VariableSizeIntArray myArray = new VariableSizeIntArray(4,3);
+            VariableSizeIntArray myArray = new VariableSizeIntArray(4, 3);
 
             // affecte la valeur 53 en (1,2)
             myArray.SetValue(1, 2, 56);
@@ -15,7 +15,7 @@ namespace NameSpace
             showArray(myArray);
 
             // Affiche les valeurs du tableau
-             void showArray(VariableSizeIntArray intArray)
+            void showArray(VariableSizeIntArray intArray)
             {
                 int a = intArray.GetLinesNumber();
                 int b = intArray.GetColumnsNumber(); ;
@@ -25,11 +25,11 @@ namespace NameSpace
                 {
                     for (int place = 0; place < b; place++)
                     {
-                        Console.Write(intArray.GetValue(lines,place) + " ");
+                        Console.Write(intArray.GetValue(lines, place) + " ");
                     }
                     Console.WriteLine();
                 }
-             
+
             }
         }
     }
